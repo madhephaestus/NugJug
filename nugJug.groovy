@@ -53,7 +53,7 @@ CSG handle =new Cylinder(15,15,100,(int)12).toCSG() // a one line Cylinder
 import eu.mihosoft.vrl.v3d.*;
 import javafx.scene.text.Font;
 
-Font font = new Font("Harrington",  30);
+Font font = new Font("Arial",  30);
 
 CSG text =CSG.unionAll( TextExtrude.text((double)5.0," NugJug",font))
 	.rotx(90)
