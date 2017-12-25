@@ -50,5 +50,17 @@ CSG handle =new Cylinder(15,15,100,(int)12).toCSG() // a one line Cylinder
 			.movez(widthOfScoop/2+opening)
 			.movex(widthOfScoop/3)
 			.difference(cone.hull())
+import eu.mihosoft.vrl.v3d.*;
+import javafx.scene.text.Font;
+
+Font font = new Font("Harrington",  30);
+
+CSG text =CSG.unionAll( TextExtrude.text((double)5.0," NugJug",font))
+	.rotx(90)
+	.toZMin()
+	.movey(1)
+	.rotz(-20)
+	.movez(10)
+	
  
-return CSG.unionAll([scoopSecion,simpleSyntax,cone,handle])
+return CSG.unionAll([scoopSecion,simpleSyntax,cone,handle,text])
