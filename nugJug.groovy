@@ -2,7 +2,7 @@
 
 double baseThickness = 5
 double widthOfScoop = 200
-double opening =45
+double opening =25
 //create an extruded polygon
 CSG polygon = Extrude.points(new Vector3d(0, 0, widthOfScoop),// This is the  extrusion depth
                 new Vector3d(0,0),// All values after this are the points in the polygon
@@ -52,13 +52,15 @@ CSG handle =new Cylinder(15,15,100,(int)12).toCSG() // a one line Cylinder
 			.movez(widthOfScoop/2+opening)
 			.movex(widthOfScoop/3)
 			.difference(cone.hull())
+			.difference(simpleSyntax.hull())
 
-Font font = new Font("Arial",  30);
+Font font = new Font("Arial",  widthOfScoop/6);
 
 double rotationAngle = Math.toDegrees(Math.atan2(widthOfScoop,(widthOfScoop/2)-opening))-90
 
 CSG text =CSG.unionAll( TextExtrude.text((double)5.0," NugJug",font))
-	.toZMin()
+	.toZMax()
+	.movez(1)
 	.rotx(90)
 	.toZMin()
 	.movey(1)
