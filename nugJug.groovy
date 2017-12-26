@@ -13,6 +13,7 @@ CSG polygon = Extrude.points(new Vector3d(0, 0, widthOfScoop),// This is the  ex
                 new Vector3d(20,baseThickness)// upper left corner test comment 
         ).rotx(-90)
         .toYMin()
+        
 //return polygon
 CSG hole =new Cylinder(opening-baseThickness,opening-baseThickness,40,(int)12).toCSG() // a one line Cylinder
 			
@@ -35,7 +36,12 @@ CSG scoopSecion = polygon.intersect(cone.hull())
 
 CSG box =cone.getBoundingBox()	
 		.toZMin()
-cone=cone.intersect(box)		
+cone=cone.intersect(box)	
+		.intersect(box
+			.movex(10)
+			//.movez(2*baseThickness)
+		)	
+			
 
 CSG handlePart = new Cube(	widthOfScoop/2+opening,
 			15,
@@ -58,7 +64,8 @@ Font font = new Font("Arial",  widthOfScoop/6);
 
 double rotationAngle = Math.toDegrees(Math.atan2(widthOfScoop,(widthOfScoop/2)-opening))-90
 
-CSG text =CSG.unionAll( TextExtrude.text((double)5.0," NugJug",font))
+CSG text =CSG.unionAll( TextExtrude.text((double)5.0,"NugJug",font))
+	.movex(15)
 	.toZMax()
 	.movez(1)
 	.rotx(90)
@@ -69,3 +76,4 @@ CSG text =CSG.unionAll( TextExtrude.text((double)5.0," NugJug",font))
 	
  
 return CSG.unionAll([scoopSecion,simpleSyntax,cone,handle,text])
+
