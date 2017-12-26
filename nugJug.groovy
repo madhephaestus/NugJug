@@ -10,7 +10,7 @@ CSG polygon = Extrude.points(new Vector3d(0, 0, widthOfScoop),// This is the  ex
                 new Vector3d(widthOfScoop,baseThickness),// upper right corner
                  new Vector3d(widthOfScoop-10,baseThickness-2),// upper right corner
                  new Vector3d(30,baseThickness-2),// upper right corner
-                new Vector3d(20,baseThickness)// upper left corner
+                new Vector3d(20,baseThickness)// upper left corner test comment 
         ).rotx(-90)
         .toYMin()
 //return polygon
