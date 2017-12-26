@@ -73,6 +73,5 @@ CSG text =CSG.unionAll( TextExtrude.text((double)5.0,"NugJug",font))
 	.movey(1)
 	.rotz(rotationAngle)
 	.movez(opening/2+4)
-	
 return CSG.unionAll([scoopSecion,simpleSyntax,cone,handle,text])
 
