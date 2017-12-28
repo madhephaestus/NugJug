@@ -65,8 +65,8 @@ Font font = new Font("Arial",  widthOfScoop/6);
 double rotationAngle = Math.toDegrees(Math.atan2(widthOfScoop,(widthOfScoop/2)-opening))-90
 
 CSG text =CSG.unionAll( TextExtrude.text((double)5.0,"NugJug",font))
+	.movex(20)
 	.rotx(30)
-	.movex(15)
 	.toZMax()
 	.movez(19)
 	.rotx(90)
@@ -74,5 +74,5 @@ CSG text =CSG.unionAll( TextExtrude.text((double)5.0,"NugJug",font))
 	.movey(1)
 	.rotz(rotationAngle)
 	.movez(opening/2+15)
-return CSG.unionAll([scoopSecion,simpleSyntax,cone,handle,text])
+return CSG.unionAll([scoopSecion,simpleSyntax,cone,handle]).difference(text)
 
