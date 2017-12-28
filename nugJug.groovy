@@ -15,20 +15,20 @@ CSG polygon = Extrude.points(new Vector3d(0, 0, widthOfScoop),// This is the  ex
         .toYMin()
         
 //return polygon
-CSG hole =new Cylinder(opening-baseThickness,opening-baseThickness,40,(int)12).toCSG() // a one line Cylinder
+CSG hole =new Cylinder(opening-baseThickness,opening-baseThickness,40,(int)6).toCSG() // a one line Cylinder
 			
-CSG simpleSyntax =new Cylinder(opening,opening,40,(int)12).toCSG() // a one line Cylinder
+CSG simpleSyntax =new Cylinder(opening,opening,40,(int)6).toCSG() // a one line Cylinder
 				.difference(hole)
-				.rotz(15)
+				.rotz(30)
 				.roty(-90)
 				.movey(widthOfScoop/2)
 				.movex(widthOfScoop)
 				.toZMin()
-CSG coneHole =new Cylinder(widthOfScoop/2-baseThickness,opening-baseThickness,widthOfScoop,(int)12).toCSG() // a one line Cylinder
+CSG coneHole =new Cylinder(widthOfScoop/2-baseThickness,opening-baseThickness,widthOfScoop,(int)6).toCSG() // a one line Cylinder
 			
-CSG cone =new Cylinder(widthOfScoop/2,opening,widthOfScoop,(int)12).toCSG() // a one line Cylinder
+CSG cone =new Cylinder(widthOfScoop/2,opening,widthOfScoop,(int)6).toCSG() // a one line Cylinder
 			.difference(coneHole)
-			.rotz(15)
+			.rotz(30)
 			.movey(widthOfScoop/2)
 			.roty(-90)
 			.movez(opening)		
@@ -65,13 +65,14 @@ Font font = new Font("Arial",  widthOfScoop/6);
 double rotationAngle = Math.toDegrees(Math.atan2(widthOfScoop,(widthOfScoop/2)-opening))-90
 
 CSG text =CSG.unionAll( TextExtrude.text((double)5.0,"NugJug",font))
+	.rotx(30)
 	.movex(15)
 	.toZMax()
-	.movez(1)
+	.movez(16)
 	.rotx(90)
 	.toZMin()
 	.movey(1)
 	.rotz(rotationAngle)
-	.movez(opening/2+4)
+	.movez(opening/2+15)
 return CSG.unionAll([scoopSecion,simpleSyntax,cone,handle,text])
 
